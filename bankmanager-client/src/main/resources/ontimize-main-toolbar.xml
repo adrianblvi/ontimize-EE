@@ -3,6 +3,8 @@
 	<ApToolBarButton attr="manager-about"
 		icon="home_24.png" />
 	<ApToolBarFiller />
+	<ApToolBarButton icon="customer_24.png"
+		attr="manager-customer" />
 	<ApToolBarButton icon="branches_24.png"
 		attr="manager-branch" />
 	<ApToolBarFiller />
