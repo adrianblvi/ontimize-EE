@@ -32,7 +32,7 @@ public class ClientLauncher {
 		OntimizeHessianHttpClientSessionProcessorFactory.ENCRYPT = false;
 		System.setProperty(MathExpressionParserFactory.MATH_EXPRESSION_PARSER_PROPERTY, MathExpressionParser.MESP);
 //		Table.XLS_EXPORT_CLASS = XLSExporterFactory.POI_3_5;
-//		Table.rendererEditorConfigurationFile = "forms/conf/table_render_editor_config.xml";
+		Table.rendererEditorConfigurationFile = "forms/conf/table_render_editor_config.xml";
 		ImageManager.addBaseImagePath("com/imatia/jee/bankmanager/images");
 //		Form.DEFAULT_DATABASE_BUNDLE = true;
 //		BasicApplicationPreferences.remoteUserPreferences = true;
@@ -40,7 +40,8 @@ public class ClientLauncher {
 
 		new MultiModuleApplicationLauncher() {
 			@Override
-			protected void doInCreationThread(String labelsPath, String clientApplicationPath, String[] springConfigurationFiles, String[] args) {
+			protected void doInCreationThread(String labelsPath, String clientApplicationPath,
+					String[] springConfigurationFiles, String[] args) {
 				LookAndFeel lookAndFeel = UIManager.getLookAndFeel();
 				super.doInCreationThread(labelsPath, clientApplicationPath, springConfigurationFiles, args);
 				// hay que configurarlo despues de que se inicialice el beans
