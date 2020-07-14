@@ -14,5 +14,6 @@
 	</Menu>
 	<Menu attr="menu.customer" text="menu.customer">
 		<MenuItem attr="manager-customer" text="manager-customer" />
+		<MenuItem attr="manager-account" text="manager-account" />
 	</Menu>
 </ApplicationMenuBar>

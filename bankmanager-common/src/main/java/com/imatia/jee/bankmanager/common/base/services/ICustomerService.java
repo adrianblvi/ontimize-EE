@@ -32,4 +32,14 @@ public interface ICustomerService {
 
 	public EntityResult customerTypeDelete(Map<String, Object> keyValues) throws OntimizeJEERuntimeException;
 
+	// ---- CUSTOMER ACCOUNT ----
+	public EntityResult customerAccountQuery(Map<String, Object> keysValues, List<String> attributes)
+			throws OntimizeJEERuntimeException;
+
+	public EntityResult customerAccountInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException;
+
+	public EntityResult customerAccountUpdate(Map<String, Object> attributes, Map<String, Object> KeyValues)
+			throws OntimizeJEERuntimeException;
+
+	public EntityResult customerAccountDelete(Map<String, Object> keyValues) throws OntimizeJEERuntimeException;
 }
