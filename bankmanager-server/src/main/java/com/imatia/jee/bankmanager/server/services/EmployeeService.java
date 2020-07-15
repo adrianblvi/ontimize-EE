@@ -17,7 +17,6 @@ import com.imatia.jee.bankmanager.server.dao.EmployeeTypeDao;
 import com.ontimize.db.EntityResult;
 import com.ontimize.jee.common.exceptions.OntimizeJEERuntimeException;
 import com.ontimize.jee.server.dao.DefaultOntimizeDaoHelper;
-import com.ontimize.util.remote.BytesBlock;
 
 @Service("EmployeeService")
 public class EmployeeService implements IEmployeeService {
@@ -74,6 +73,7 @@ public class EmployeeService implements IEmployeeService {
 	@Override
 	@Transactional(rollbackFor = Exception.class)
 	public EntityResult employeeTypeInsert(Map<String, Object> attributes) throws OntimizeJEERuntimeException {
+		attributes = (Map<String, Object>) this.adaptBase64ImageField(EmployeeDao.ATTR_EMPLOYEEPHOTO, attributes);
 		return this.daoHelper.insert(this.employeeTypeDao, attributes);
 	}
 
@@ -81,6 +81,7 @@ public class EmployeeService implements IEmployeeService {
 	@Transactional(rollbackFor = Exception.class)
 	public EntityResult employeeTypeUpdate(Map<String, Object> attributes, Map<String, Object> keyValues)
 			throws OntimizeJEERuntimeException {
+		attributes = (Map<String, Object>) this.adaptBase64ImageField(EmployeeDao.ATTR_EMPLOYEEPHOTO, attributes);
 		return this.daoHelper.update(this.employeeTypeDao, attributes, keyValues);
 	}
 
@@ -88,5 +89,17 @@ public class EmployeeService implements IEmployeeService {
 	@Transactional(rollbackFor = Exception.class)
 	public EntityResult employeeTypeDelete(Map<String, Object> keyValues) throws OntimizeJEERuntimeException {
 		return this.daoHelper.delete(this.employeeTypeDao, keyValues);
+	}
+
+	public Map<String, Object> adaptBase64ImageField(String field, Map<String, Object> attributes) {
+		if (attributes.get(field) instanceof String) {
+			String objectPhoto = (String) attributes.remove(field);
+			Map<String, Object> mapAttr = new HashMap<>();
+			mapAttr.putAll((Map<String, Object>) attributes);
+			mapAttr.put(field, Base64.getDecoder().decode(objectPhoto));
+			return mapAttr;
+		} else {
+			return attributes;
+		}
 	}
 }
