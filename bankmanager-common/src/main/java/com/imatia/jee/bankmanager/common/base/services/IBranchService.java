@@ -30,4 +30,15 @@ public interface IBranchService {
 			throws OntimizeJEERuntimeException;
 
 	public EntityResult accountDelete(Map<String, Object> keyValues) throws OntimizeJEERuntimeException;
+
+	// ---- ACCOUNT BALANCE ----
+	
+	public EntityResult accountBalanceQuery(Map<String, Object> keysValues, List<String> attributes)
+			throws OntimizeJEERuntimeException;
+
+	public EntityResult accountBalanceUpdate(Map<String, Object> attributes, Map<String, Object> keyValues)
+			throws OntimizeJEERuntimeException;
+
+	public EntityResult accountBalanceDelete(Map<String, Object> keyValues) throws OntimizeJEERuntimeException;
+
 }
